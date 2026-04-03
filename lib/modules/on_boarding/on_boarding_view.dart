@@ -4,7 +4,6 @@ import 'package:evenrly/modules/on_boarding/widgets/select_language.dart';
 import 'package:evenrly/modules/on_boarding/widgets/select_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../core/gen/assets.gen.dart';
 
 class OnBoardingView extends StatelessWidget {
