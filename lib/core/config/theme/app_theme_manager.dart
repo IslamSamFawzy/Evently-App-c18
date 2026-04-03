@@ -61,7 +61,7 @@ abstract class AppThemeManager {
           fontFamily: "Poppins",
           fontSize: 14,
           fontWeight: FontWeight.w600,
-          color: Colors.white
+          color: AppColors.mainDarkText
       ),
     ),
   );

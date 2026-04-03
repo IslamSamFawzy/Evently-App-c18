@@ -14,4 +14,6 @@ abstract class AppColors {
   static const Color primaryDark = Color(0xff457AED);
   static const Color mainDarkText = Color(0xffFFFFFF);
   static const Color subDarkText = Color(0xffD6D6D6);
+  static const Color unSelectedItem = Color(0xff001440);
+  static const Color strokeBorder = Color(0xff002D8F);
 }

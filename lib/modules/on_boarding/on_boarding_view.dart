@@ -1,7 +1,9 @@
-import 'package:evenrly/core/config/theme/app_colors.dart';
+import 'package:evenrly/core/utils/provider/app_settings_controller.dart';
+import 'package:evenrly/l10n/app_localizations.dart';
 import 'package:evenrly/modules/on_boarding/widgets/select_language.dart';
 import 'package:evenrly/modules/on_boarding/widgets/select_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/gen/assets.gen.dart';
 
@@ -11,9 +13,10 @@ class OnBoardingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final provider = Provider.of<AppSettingsController>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Assets.images.eventlyLogoImg.image(width: 142)),
+        title: Center(child: Assets.images.eventlyLogoImg.image(width: 142,color: theme.primaryColor)),
       ),
 
       body: Padding(
@@ -21,14 +24,15 @@ class OnBoardingView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Assets.images.onBoardingConfigImg.image(),
+            Assets.images.onBoardingConfigImg.image(color: provider.isDark() ? Colors.white : theme.primaryColor),
+            SizedBox(height: 24),
             Text(
-              'Personalize Your Experience',
+              AppLocalizations.of(context)!.personalize_your_experience,
               style: theme.textTheme.titleLarge,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 10),
             Text(
-              "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
+              AppLocalizations.of(context)!.personalize_your_experience_desc,
               style: theme.textTheme.bodyLarge,
             ),
             SizedBox(height: 16),
@@ -45,10 +49,13 @@ class OnBoardingView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              child: Text(
-                'Let’s start',
-                style: theme.textTheme.titleLarge!.copyWith(
-                  color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Text(
+                  AppLocalizations.of(context)!.lets_start,
+                  style: theme.textTheme.titleLarge!.copyWith(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
