@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "72364372545",
+    "project_id": "evently-islam-project",
+    "storage_bucket": "evently-islam-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72364372545:android:d650a7edd7a8990a1a8cc0",
+        "android_client_info": {
+          "package_name": "com.example.evenrly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72364372545-j80uc03ouv6baqvndqgcdh9o1lsh5t8r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evenrly",
+            "certificate_hash": "6b9a7a5915b68bdf214673a2b03f907f18c553f8"
+          }
+        },
+        {
+          "client_id": "72364372545-0tshn4h2frjvclugnnhcjo5d9kuliros.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg3zmf7bt862lxw0OvA02Vp3JctuG5FdA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72364372545-0tshn4h2frjvclugnnhcjo5d9kuliros.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "72364372545-5or5aqb522dhbsv5hmcn6vl9ufoiel95.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.evenrly"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

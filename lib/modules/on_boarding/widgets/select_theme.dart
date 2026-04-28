@@ -32,7 +32,9 @@ class SelectTheme extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: provider.currentTheme == ThemeMode.light
                       ? theme.primaryColor
-                      : provider.isDark() ? AppColors.unSelectedItem : Colors.white,
+                      : provider.isDark()
+                      ? AppColors.unSelectedItem
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
                     color: provider.isDark()
@@ -40,14 +42,27 @@ class SelectTheme extends StatelessWidget {
                         : Colors.transparent,
                   ),
                 ),
-                child: Assets.icons.sun.svg(
-                  colorFilter: ColorFilter.mode(
-                    provider.currentTheme == ThemeMode.light
-                        ? Colors.white
-                        : provider.isDark() ? Colors.white : theme.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                child: provider.isDark()
+                    ? Assets.icons.sunUnfilled.svg(
+                        colorFilter: ColorFilter.mode(
+                          provider.currentTheme == ThemeMode.light
+                              ? Colors.white
+                              : provider.isDark()
+                              ? Colors.white
+                              : theme.primaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      )
+                    : Assets.icons.sun.svg(
+                        colorFilter: ColorFilter.mode(
+                          provider.currentTheme == ThemeMode.light
+                              ? Colors.white
+                              : provider.isDark()
+                              ? Colors.white
+                              : theme.primaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
               ),
             ),
             SizedBox(width: 8),
@@ -62,7 +77,9 @@ class SelectTheme extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: provider.currentTheme == ThemeMode.dark
                       ? theme.primaryColor
-                      : provider.isDark() ? AppColors.unSelectedItem : Colors.white,
+                      : provider.isDark()
+                      ? AppColors.unSelectedItem
+                      : Colors.white,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
                     color: provider.isDark()
@@ -70,14 +87,27 @@ class SelectTheme extends StatelessWidget {
                         : Colors.transparent,
                   ),
                 ),
-                child: Assets.icons.moon.svg(
-                  colorFilter: ColorFilter.mode(
-                    provider.currentTheme == ThemeMode.dark
-                        ? Colors.white
-                        : provider.isDark() ? Colors.white : theme.primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                ),
+                child: provider.isDark()
+                    ? Assets.icons.moonFilled.svg(
+                        colorFilter: ColorFilter.mode(
+                          provider.currentTheme == ThemeMode.dark
+                              ? Colors.white
+                              : provider.isDark()
+                              ? Colors.white
+                              : theme.primaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      )
+                    : Assets.icons.moon.svg(
+                        colorFilter: ColorFilter.mode(
+                          provider.currentTheme == ThemeMode.dark
+                              ? Colors.white
+                              : provider.isDark()
+                              ? Colors.white
+                              : theme.primaryColor,
+                          BlendMode.srcIn,
+                        ),
+                      ),
               ),
             ),
           ],

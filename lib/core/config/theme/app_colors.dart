@@ -6,6 +6,7 @@ abstract class AppColors {
   static const Color primary = Color(0xff0E3A99);
   static const Color mainText = Color(0xff1C1C1C);
   static const Color subText = Color(0xff686868);
+  static const Color strokeColor = Color(0xffF0F0F0);
 
 
 

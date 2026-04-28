@@ -1,3 +1,4 @@
+import 'package:evenrly/core/config/routes/pages_route_name.dart';
 import 'package:evenrly/core/utils/provider/app_settings_controller.dart';
 import 'package:evenrly/l10n/app_localizations.dart';
 import 'package:evenrly/modules/on_boarding/widgets/select_language.dart';
@@ -15,7 +16,12 @@ class OnBoardingView extends StatelessWidget {
     final provider = Provider.of<AppSettingsController>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Assets.images.eventlyLogoImg.image(width: 142,color: theme.primaryColor)),
+        title: Center(
+          child: Assets.images.eventlyLogoImg.image(
+            width: 142,
+            color: theme.primaryColor,
+          ),
+        ),
       ),
 
       body: Padding(
@@ -23,7 +29,9 @@ class OnBoardingView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Assets.images.onBoardingConfigImg.image(color: provider.isDark() ? Colors.white : theme.primaryColor),
+            Assets.images.onBoardingConfigImg.image(
+              color: provider.isDark() ? Colors.white : theme.primaryColor,
+            ),
             SizedBox(height: 24),
             Text(
               AppLocalizations.of(context)!.personalize_your_experience,
@@ -38,9 +46,15 @@ class OnBoardingView extends StatelessWidget {
             SelectLanguage(),
             SizedBox(height: 18),
             SelectTheme(),
-            SizedBox(height: 24),
+            Spacer(),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  PagesRouteName.onBoarding2,
+                  (route) => false,
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: theme.primaryColor,
                 padding: EdgeInsets.symmetric(vertical: 10),
