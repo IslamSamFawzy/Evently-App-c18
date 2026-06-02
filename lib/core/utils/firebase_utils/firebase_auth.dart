@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:evenrly/core/utils/firebase_utils/token_service.dart';
 
 abstract class FirebaseAuthUtils {
 
@@ -18,6 +19,9 @@ abstract class FirebaseAuthUtils {
       
       // Update user profile with display name
       await userCredential.user?.updateDisplayName(name);
+      
+      // Get and cache the Firebase ID token
+      await TokenService.getIdToken(forceRefresh: true);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         debugPrint('The password provided is too weak.');
@@ -38,6 +42,10 @@ abstract class FirebaseAuthUtils {
         email: emailAddress,
         password: password,
       );
+      
+      // Get and cache the Firebase ID token
+      await TokenService.getIdToken(forceRefresh: true);
+      
       return true;
     } on FirebaseAuthException catch (e) {
       log(e.message ?? "");
