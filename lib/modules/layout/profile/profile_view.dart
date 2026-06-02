@@ -42,7 +42,7 @@ class _ProfileViewState extends State<ProfileView> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             CircleAvatar(
               radius: 60,
               backgroundColor: Colors.transparent,
@@ -54,21 +54,21 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               user?.displayName ?? 'User',
               style: theme.textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               user?.email ?? 'Email',
               style: theme.textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w400,
               ),
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             CustomContainerButton(
               text: local.dark_mode,
               svgPic: provider.isDark()
@@ -80,7 +80,7 @@ class _ProfileViewState extends State<ProfileView> {
                 );
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             CustomContainerButton(
               text: local.language,
               svgPic: provider.isArabic()
@@ -90,7 +90,7 @@ class _ProfileViewState extends State<ProfileView> {
                 showLanguageBottomSheet(context);
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             CustomContainerButton(
               text: local.logout,
               svgPic: Assets.icons.logout2.path,
@@ -110,11 +110,11 @@ class _ProfileViewState extends State<ProfileView> {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
         final local = AppLocalizations.of(context)!;
-        final provider = Provider.of<AppSettingsController>(context);
+        final provider = Provider.of<AppSettingsController>(context, listen: false);
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -123,7 +123,7 @@ class _ProfileViewState extends State<ProfileView> {
               Text(
                 local.choose_language,
                 style: Theme.of(context).textTheme.titleLarge,),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               ListTile(
                 title: Text("English"),

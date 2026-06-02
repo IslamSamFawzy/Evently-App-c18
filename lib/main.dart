@@ -11,14 +11,11 @@ import 'core/services/notification_service.dart';
 import 'core/services/push_service.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  // Configure Firebase Auth to persist user session
-  await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
 
   final controller = AppSettingsController();
   await controller.loadSettings();
