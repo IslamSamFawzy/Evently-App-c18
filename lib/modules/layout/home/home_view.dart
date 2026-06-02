@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:evenrly/core/config/routes/pages_route_name.dart';
 import 'package:evenrly/core/config/theme/app_colors.dart';
 import 'package:evenrly/core/gen/assets.gen.dart';
 import 'package:evenrly/core/utils/firebase_utils/firestore_utils.dart';
@@ -104,7 +103,10 @@ class _HomeViewState extends State<HomeView> {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Text(user?.displayName ?? 'User', style: theme.textTheme.titleLarge),
+                    Text(
+                      user?.displayName ?? 'User',
+                      style: theme.textTheme.titleLarge,
+                    ),
                   ],
                 ),
                 const Spacer(),
@@ -119,21 +121,21 @@ class _HomeViewState extends State<HomeView> {
                       },
                       child: provider.isDark()
                           ? Assets.icons.moon.svg(
-                        height: 24,
-                        width: 24,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.primaryDark,
-                          BlendMode.srcIn,
-                        ),
-                      )
+                              height: 24,
+                              width: 24,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.primaryDark,
+                                BlendMode.srcIn,
+                              ),
+                            )
                           : Assets.icons.sunUnfilled.svg(
-                        height: 24,
-                        width: 24,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.primary,
-                          BlendMode.srcIn,
-                        ),
-                      ),
+                              height: 24,
+                              width: 24,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.primary,
+                                BlendMode.srcIn,
+                              ),
+                            ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -142,14 +144,21 @@ class _HomeViewState extends State<HomeView> {
                         );
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 8,
+                        ),
                         decoration: BoxDecoration(
-                          color: provider.isDark() ? AppColors.primaryDark : AppColors.primary,
+                          color: provider.isDark()
+                              ? AppColors.primaryDark
+                              : AppColors.primary,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(
                           provider.isArabic() ? 'AR' : 'EN',
-                          style: theme.textTheme.bodyMedium!.copyWith(color: Colors.white),
+                          style: theme.textTheme.bodyMedium!.copyWith(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -189,26 +198,34 @@ class _HomeViewState extends State<HomeView> {
                   final favIds = favSnapshot.data ?? <String>{};
 
                   return StreamBuilder<QuerySnapshot<EventData>>(
-                    stream: FirestoreUtils.getEventsStream(category: selectedCategory),
+                    stream: FirestoreUtils.getEventsStream(
+                      category: selectedCategory,
+                    ),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
                       }
 
                       if (snapshot.hasError) {
-                        return const Center(child: Text('Something went wrong'));
+                        return const Center(
+                          child: Text('Something went wrong'),
+                        );
                       }
 
                       if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                         return Center(child: Text(local.no_data_found));
                       }
 
-                      final List<EventData> dataList =
-                      snapshot.data!.docs.map((e) => e.data()).toList();
+                      final List<EventData> dataList = snapshot.data!.docs
+                          .map((e) => e.data())
+                          .toList();
 
                       return ListView.separated(
                         itemBuilder: (context, index) {
-                          return EventCardItem(eventData: dataList[index], favIds: favIds);
+                          return EventCardItem(
+                            eventData: dataList[index],
+                            favIds: favIds,
+                          );
                         },
                         separatorBuilder: (_, _) => const SizedBox(height: 10),
                         itemCount: dataList.length,

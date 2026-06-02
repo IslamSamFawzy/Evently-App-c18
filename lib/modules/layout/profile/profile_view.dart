@@ -1,5 +1,6 @@
 import 'package:evenrly/core/config/routes/pages_route_name.dart';
 import 'package:evenrly/core/gen/assets.gen.dart';
+import 'package:evenrly/core/utils/firebase_utils/token_service.dart';
 import 'package:evenrly/core/utils/provider/app_settings_controller.dart';
 import 'package:evenrly/core/widgets/custom_container_button.dart';
 import 'package:evenrly/l10n/app_localizations.dart';
@@ -95,6 +96,7 @@ class _ProfileViewState extends State<ProfileView> {
               svgPic: Assets.icons.logout2.path,
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
+                await TokenService.clearToken();
                 Navigator.pushReplacementNamed(context, PagesRouteName.signIn);
               },
             ),
